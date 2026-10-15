@@ -10,3 +10,6 @@ Click here to go to my notebook → [Notebook](notebook.md)
 
 ## Career Goals
 Click here to see my career goals → [Career Goals](Career.md)
+
+## Snake Game
+Click here to see the code for my new educational snake game → [Snake Game](SnakeGameCode.md)
