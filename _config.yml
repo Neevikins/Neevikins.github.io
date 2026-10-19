@@ -1,10 +1,5 @@
----
-layout: default
-title: Home
----
-
 title: My Wrangler Studios Portfolio
 description: This is my portfolio showcasing my projects and skills.
-url: "https://Neevikins.github.io"
-baseurl: "/Neevikins.github.io"
+url: "https://neevikins.github.io"
+baseurl: ""
 theme: "jekyll-theme-cayman"
