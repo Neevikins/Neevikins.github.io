@@ -13,3 +13,6 @@ Click here to see my career goals → [Career Goals](Career.md)
 
 ## Snake Game
 View the Java source for my educational snake game → [Educational Snake Game](https://neevikins.github.io/SnakeGameCode.html)
+
+## First Array
+Click here to see the java code for my array example → [Array Example](https://neevikins.github.io/FirstArrayCode.html)
