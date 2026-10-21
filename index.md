@@ -16,3 +16,6 @@ View the Java source for my educational snake game → [Educational Snake Game](
 
 ## First Array
 Click here to see the java code for my array example → [Array Example](FirstArrayCode.md)
+
+## Tech Ethics & Law Academy
+Explore the interactive learning guide → [Tech Ethics & Law Academy](EducationalWebsite.html)

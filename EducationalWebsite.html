@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Ethics & Law Interactive Academy</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #0f172a;
+            --text-muted: #475569;
+            --border: #e2e8f0;
+            --success: #16a34a;
+            --error: #dc2626;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        header h1 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav button {
+            padding: 10px 18px;
+            border: 1px solid var(--border);
+            background: var(--card-bg);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-muted);
+            transition: all 0.2s ease;
+        }
+
+        nav button.active, nav button:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .section {
+            display: none;
+            background: var(--card-bg);
+            padding: 28px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            margin-bottom: 24px;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        h2 {
+            margin-bottom: 16px;
+            color: var(--text);
+            border-bottom: 2px solid var(--bg);
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            margin: 16px 0 8px 0;
+            color: var(--primary-dark);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-right: 6px;
+        }
+
+        .badge-ethics { background: #dbeafe; color: #1e40af; }
+        .badge-law { background: #fef3c7; color: #92400e; }
+
+        .scenario-card {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 16px;
+            background: #fafafa;
+        }
+
+        .options-group {
+            margin-top: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option-btn {
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            background: white;
+            border-radius: 6px;
+            text-align: left;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: background 0.15s ease;
+        }
+
+        .option-btn:hover {
+            background: #f1f5f9;
+        }
+
+        .feedback-box {
+            margin-top: 16px;
+            padding: 14px;
+            border-radius: 6px;
+            display: none;
+            font-size: 0.95rem;
+        }
+
+        .feedback-box.correct {
+            display: block;
+            background: #dcfce7;
+            border: 1px solid #86efac;
+            color: #166534;
+        }
+
+        .feedback-box.incorrect {
+            display: block;
+            background: #fee2e2;
+            border: 1px solid #fca5a5;
+            color: #991b1b;
+        }
+
+        .citation-box {
+            background: #f8fafc;
+            border-left: 4px solid var(--primary);
+            padding: 12px 16px;
+            margin: 16px 0;
+            font-size: 0.9rem;
+        }
+
+        .source-link {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        .option-btn:focus-visible,
+        nav button:focus-visible,
+        a:focus-visible {
+            outline: 3px solid var(--primary-dark);
+            outline-offset: 3px;
+        }
+
+        .section[hidden] {
+            display: none;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 40px;
+            padding-bottom: 20px;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 12px; }
+            .section { padding: 20px; }
+            header h1 { font-size: 1.7rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Tech Ethics &amp; Law Interactive Academy</h1>
+        <p>Explore responsible technology, practical ethics, and the laws that shape digital life.</p>
+    </header>
+
+    <nav aria-label="Academy sections">
+        <button class="active" type="button" data-section="overview" aria-controls="overview" aria-pressed="true">Overview</button>
+        <button type="button" data-section="ethics" aria-controls="ethics" aria-pressed="false">Tech Ethics</button>
+        <button type="button" data-section="law" aria-controls="law" aria-pressed="false">Technology &amp; Law</button>
+        <button type="button" data-section="scenarios" aria-controls="scenarios" aria-pressed="false">Practice</button>
+        <button type="button" data-section="sources" aria-controls="sources" aria-pressed="false">Sources</button>
+    </nav>
+
+    <main>
+        <section class="section active" id="overview" aria-labelledby="overview-title">
+            <h2 id="overview-title">Welcome to the academy</h2>
+            <p>Technology creates opportunities and responsibilities. This guide introduces ethical decision-making, explains how law can apply to digital activities, and lets you practice with realistic scenarios.</p>
+            <div class="scenario-card">
+                <h3>How to use this guide</h3>
+                <p>Choose a topic above and consider who may be affected by a technology decision. Laws differ by location and change over time; this guide is for general education, not legal advice.</p>
+            </div>
+        </section>
+
+        <section class="section" id="ethics" aria-labelledby="ethics-title" hidden>
+            <h2 id="ethics-title">Tech ethics</h2>
+            <p>Ethics helps people decide what they ought to do, including when a choice is legal but may still cause harm.</p>
+            <h3>Questions to ask</h3>
+            <ul>
+                <li><span class="badge badge-ethics">Fairness</span> Could this system treat people differently or exclude a group?</li>
+                <li><span class="badge badge-ethics">Privacy</span> Is personal information used in ways people understand and expect?</li>
+                <li><span class="badge badge-ethics">Safety</span> What could go wrong, who could be harmed, and how can that risk be reduced?</li>
+                <li><span class="badge badge-ethics">Accountability</span> Who is responsible for monitoring the system and correcting problems?</li>
+            </ul>
+            <div class="citation-box">A responsible decision considers affected people, likely consequences, transparency, and ways to prevent or address harm.</div>
+        </section>
+
+        <section class="section" id="law" aria-labelledby="law-title" hidden>
+            <h2 id="law-title">Technology and law</h2>
+            <p>Digital activities can involve many areas of law. The rules that apply depend on the facts and the jurisdiction.</p>
+            <h3>Common areas to consider</h3>
+            <ul>
+                <li><span class="badge badge-law">Privacy</span> Rules may limit how personal data is collected, protected, shared, or retained.</li>
+                <li><span class="badge badge-law">Copyright</span> Creative works and software may be protected; permission or a license may be needed to reuse them.</li>
+                <li><span class="badge badge-law">Computer access</span> Accessing systems or data without authorization can have serious consequences.</li>
+                <li><span class="badge badge-law">Consumer protection</span> Claims about a product, service, or automated decision may be subject to legal requirements.</li>
+            </ul>
+            <div class="citation-box">For a real legal question, consult current official guidance or a qualified legal professional in the relevant jurisdiction.</div>
+        </section>
+
+        <section class="section" id="scenarios" aria-labelledby="scenarios-title" hidden>
+            <h2 id="scenarios-title">Practice with scenarios</h2>
+            <p>Choose the best first step. Feedback appears below each question.</p>
+            <article class="scenario-card" data-question>
+                <h3>A database is exposed</h3>
+                <p>While using a school website, you notice that a page appears to reveal other students' personal information. What should you do first?</p>
+                <div class="options-group">
+                    <button class="option-btn" type="button" data-correct="false">Open more records and save copies so you can prove the issue.</button>
+                    <button class="option-btn" type="button" data-correct="true">Stop exploring the data and report what you observed through an authorized school contact.</button>
+                    <button class="option-btn" type="button" data-correct="false">Post a screenshot publicly to warn everyone.</button>
+                </div>
+                <p class="feedback-box" role="status" aria-live="polite"></p>
+            </article>
+            <article class="scenario-card" data-question>
+                <h3>Using an online image</h3>
+                <p>You want to include an image you found online in a project that will be published. What is the most responsible next step?</p>
+                <div class="options-group">
+                    <button class="option-btn" type="button" data-correct="false">Use it because anything visible online is free to reuse.</button>
+                    <button class="option-btn" type="button" data-correct="false">Remove the creator's name and use it.</button>
+                    <button class="option-btn" type="button" data-correct="true">Check its license and permissions, or choose an image you are authorized to use.</button>
+                </div>
+                <p class="feedback-box" role="status" aria-live="polite"></p>
+            </article>
+        </section>
+
+        <section class="section" id="sources" aria-labelledby="sources-title" hidden>
+            <h2 id="sources-title">Further reading</h2>
+            <p>These resources provide general information. Check each source for its current guidance and scope.</p>
+            <ul>
+                <li><a class="source-link" href="https://www.ftc.gov/business-guidance/privacy-security">Federal Trade Commission: Privacy and security</a></li>
+                <li><a class="source-link" href="https://www.nist.gov/privacy-framework">NIST Privacy Framework</a></li>
+                <li><a class="source-link" href="https://www.copyright.gov/what-is-copyright/">U.S. Copyright Office: What is copyright?</a></li>
+            </ul>
+        </section>
+    </main>
+    <footer><p>Educational material only. It is not legal advice.</p></footer>
+</div>
+
+<script>
+    const navigationButtons = document.querySelectorAll("nav button[data-section]");
+    const sections = document.querySelectorAll("main .section");
+
+    navigationButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const selectedSection = button.dataset.section;
+            navigationButtons.forEach((navigationButton) => {
+                const isSelected = navigationButton === button;
+                navigationButton.classList.toggle("active", isSelected);
+                navigationButton.setAttribute("aria-pressed", String(isSelected));
+            });
+            sections.forEach((section) => {
+                const isSelected = section.id === selectedSection;
+                section.hidden = !isSelected;
+                section.classList.toggle("active", isSelected);
+            });
+        });
+    });
+
+    document.querySelectorAll("[data-question]").forEach((question) => {
+        const feedback = question.querySelector(".feedback-box");
+        question.querySelectorAll(".option-btn").forEach((option) => {
+            option.addEventListener("click", () => {
+                const isCorrect = option.dataset.correct === "true";
+                feedback.textContent = isCorrect
+                    ? "Correct. This response limits unnecessary access and uses an authorized reporting channel."
+                    : "Not quite. Avoid further access or public disclosure; use an authorized reporting channel.";
+                feedback.className = `feedback-box ${isCorrect ? "correct" : "incorrect"}`;
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
