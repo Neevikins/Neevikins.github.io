@@ -172,6 +172,13 @@
             color: #991b1b;
         }
 
+        .feedback-box.explanation {
+            display: block;
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            color: #1e3a8a;
+        }
+
         .citation-box {
             background: #f8fafc;
             border-left: 4px solid var(--primary);
@@ -313,9 +320,9 @@
                 <h3>A database is exposed</h3>
                 <p>While using a school website, you notice that a page appears to reveal other students' personal information. What should you do first?</p>
                 <div class="options-group">
-                    <button class="option-btn" type="button" data-correct="false">Open more records and save copies so you can prove the issue.</button>
-                    <button class="option-btn" type="button" data-correct="true">Stop exploring the data and report what you observed through an authorized school contact.</button>
-                    <button class="option-btn" type="button" data-correct="false">Post a screenshot publicly to warn everyone.</button>
+                    <button class="option-btn" type="button" data-feedback="Opening more records exposes more people’s information and may exceed your authorization. Stop exploring and report only what you already observed. Reflection: What could you tell the school without collecting anyone else’s data?">Open more records and save copies so you can prove the issue.</button>
+                    <button class="option-btn" type="button" data-feedback="This is the safest first step: it avoids further exposure and lets the school’s authorized team investigate. Share only the minimum details needed through its reporting channel. Reflection: How could you describe what happened without attaching sensitive records?">Stop exploring the data and report what you observed through an authorized school contact.</button>
+                    <button class="option-btn" type="button" data-feedback="Posting a screenshot could spread private information beyond the original exposure and make a safe response harder. Report the issue privately through an authorized contact instead. Reflection: Who needs to know about the issue in order to fix it?">Post a screenshot publicly to warn everyone.</button>
                 </div>
                 <p class="feedback-box" role="status" aria-live="polite"></p>
             </article>
@@ -323,9 +330,19 @@
                 <h3>Using an online image</h3>
                 <p>You want to include an image you found online in a project that will be published. What is the most responsible next step?</p>
                 <div class="options-group">
-                    <button class="option-btn" type="button" data-correct="false">Use it because anything visible online is free to reuse.</button>
-                    <button class="option-btn" type="button" data-correct="false">Remove the creator's name and use it.</button>
-                    <button class="option-btn" type="button" data-correct="true">Check its license and permissions, or choose an image you are authorized to use.</button>
+                    <button class="option-btn" type="button" data-feedback="Being viewable online does not automatically make an image free to reuse. Check the copyright status and license before publishing, or find an image with clear reuse permission. Reflection: What terms would you look for in a license?">Use it because anything visible online is free to reuse.</button>
+                    <button class="option-btn" type="button" data-feedback="Removing a creator’s name does not grant permission and can make the reuse less respectful. Check the license and follow any attribution requirements, or choose an image you are authorized to use. Reflection: If a license requires credit, what information should you preserve?">Remove the creator's name and use it.</button>
+                    <button class="option-btn" type="button" data-feedback="Checking the license or getting permission helps respect the creator’s rights and lets you follow conditions such as attribution or limits on commercial use. Reflection: If the license is unclear, what safer alternatives do you have?">Check its license and permissions, or choose an image you are authorized to use.</button>
+                </div>
+                <p class="feedback-box" role="status" aria-live="polite"></p>
+            </article>
+            <article class="scenario-card" data-question>
+                <h3>The campus navigation app</h3>
+                <p>A campus app records students’ precise location all day, including when they are not using navigation. What is the best next step for the design team?</p>
+                <div class="options-group">
+                    <button class="option-btn" type="button" data-feedback="A settings switch alone may not make continuous collection necessary or expected. Ask what location data each feature actually needs, explain the use clearly, and review applicable privacy requirements. Under GDPR Article 5(1)(c), where the GDPR applies, personal data must be limited to what is necessary for its purposes. Reflection: Would your answer change if users were clearly told about background tracking?">Keep all-day tracking on because users can turn it off in settings.</button>
+                    <button class="option-btn" type="button" data-feedback="Collecting location only while a person uses navigation better matches the feature and can reduce unnecessary exposure. Explain the request and separately assess applicable legal requirements, including whether there is a lawful basis; data minimisation alone does not establish compliance. Reflection: What location data, if any, would the app need to keep after a trip ends?">Request location only while navigation is being used, explain why, and review applicable privacy requirements.</button>
+                    <button class="option-btn" type="button" data-feedback="Sharing detailed location histories for analytics creates additional exposure and may exceed what is needed for navigation. First define the analytics purpose, consider less identifying alternatives, and assess applicable privacy rules before any sharing. Reflection: Could aggregated or less precise information answer the analytics question?">Share the location history with partners so the app can improve its service.</button>
                 </div>
                 <p class="feedback-box" role="status" aria-live="polite"></p>
             </article>
@@ -351,9 +368,10 @@
                 <li>Connected legal examples to the GDPR and DTSA citations while noting that laws depend on jurisdiction and facts.</li>
                 <li>Added a worked example that explains an ethical privacy issue and GDPR Article 5(1)(c)'s data-minimisation principle, then distinguishes ethical judgment from legal compliance.</li>
                 <li>Linked the GDPR claim directly to the official regulation text and qualified the explanation to avoid implying that the GDPR applies in every situation or that one principle alone determines compliance.</li>
+                <li>Expanded practice into scenario-based decisions with answer-specific explanations and reflection questions, including a location-tracking example that applies the privacy discussion.</li>
             </ul>
             <h3>Learning approach</h3>
-            <p>The examples are realistic teaching scenarios, not claims about specific companies, court cases, or legal outcomes. The learner is treated as a decision-maker: inspect the facts, ask what is missing, consider possible harms, and choose a responsible next step. Existing multiple-choice practice remains available for quick feedback.</p>
+            <p>The examples are realistic teaching scenarios, not claims about specific companies, court cases, or legal outcomes. Each practice choice now receives an explanation and a reflection question, so learners can consider why an option is stronger or riskier and apply the reasoning to a new situation.</p>
             <div class="citation-box">Next improvement to consider: ask learners which scenario felt most realistic and add examples that reflect their feedback.</div>
         </section>
 
@@ -412,11 +430,8 @@
         const feedback = question.querySelector(".feedback-box");
         question.querySelectorAll(".option-btn").forEach((option) => {
             option.addEventListener("click", () => {
-                const isCorrect = option.dataset.correct === "true";
-                feedback.textContent = isCorrect
-                    ? "Correct. This response limits unnecessary access and uses an authorized reporting channel."
-                    : "Not quite. Avoid further access or public disclosure; use an authorized reporting channel.";
-                feedback.className = `feedback-box ${isCorrect ? "correct" : "incorrect"}`;
+                feedback.textContent = option.dataset.feedback;
+                feedback.className = "feedback-box explanation";
             });
         });
     });
