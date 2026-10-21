@@ -180,6 +180,22 @@
             font-size: 0.9rem;
         }
 
+        .case-file {
+            border-left: 4px solid var(--primary-dark);
+            background: #eff6ff;
+            border-radius: 6px;
+            padding: 16px;
+            margin: 16px 0;
+        }
+
+        .case-file h3 {
+            margin-top: 0;
+        }
+
+        .case-file p + p {
+            margin-top: 8px;
+        }
+
         .source-link {
             color: var(--primary);
             text-decoration: underline;
@@ -224,6 +240,7 @@
         <button type="button" data-section="ethics" aria-controls="ethics" aria-pressed="false">Tech Ethics</button>
         <button type="button" data-section="law" aria-controls="law" aria-pressed="false">Technology &amp; Law</button>
         <button type="button" data-section="scenarios" aria-controls="scenarios" aria-pressed="false">Practice</button>
+        <button type="button" data-section="documentation" aria-controls="documentation" aria-pressed="false">Documentation</button>
         <button type="button" data-section="sources" aria-controls="sources" aria-pressed="false">Sources</button>
         <button type="button" data-section="citations" aria-controls="citations" aria-pressed="false">Citations</button>
     </nav>
@@ -235,6 +252,11 @@
             <div class="scenario-card">
                 <h3>How to use this guide</h3>
                 <p>Choose a topic above and consider who may be affected by a technology decision. Laws differ by location and change over time; this guide is for general education, not legal advice.</p>
+            </div>
+            <div class="case-file">
+                <h3>Case file: The campus navigation app</h3>
+                <p>A student team builds an app that helps people find classrooms. The app asks for location access all day, even when it is closed.</p>
+                <p><strong>Think it through:</strong> Is continuous tracking necessary for directions? What could the app do instead, and how should it explain location use?</p>
             </div>
         </section>
 
@@ -249,6 +271,11 @@
                 <li><span class="badge badge-ethics">Accountability</span> Who is responsible for monitoring the system and correcting problems?</li>
             </ul>
             <div class="citation-box">A responsible decision considers affected people, likely consequences, transparency, and ways to prevent or address harm.</div>
+            <div class="case-file">
+                <h3>Case file: The résumé filter</h3>
+                <p>A company uses software to rank job applications. The team notices that qualified applicants from one school are consistently ranked lower, although the school is not part of the stated job requirements.</p>
+                <p><strong>Socratic check:</strong> What evidence would tell you whether the ranking is fair? Who should review the results? Should the team pause use of the tool while investigating?</p>
+            </div>
         </section>
 
         <section class="section" id="law" aria-labelledby="law-title" hidden>
@@ -262,6 +289,12 @@
                 <li><span class="badge badge-law">Consumer protection</span> Claims about a product, service, or automated decision may be subject to legal requirements.</li>
             </ul>
             <div class="citation-box">For a real legal question, consult current official guidance or a qualified legal professional in the relevant jurisdiction.</div>
+            <div class="case-file">
+                <h3>Case file: Two kinds of information</h3>
+                <p><strong>Privacy example:</strong> A fitness app collects precise location data even though its basic step counter does not need it. The team should examine what is collected, why it is needed, and how users are informed. The GDPR is one legal framework that addresses personal-data processing; its application depends on the circumstances.</p>
+                <p><strong>Trade-secret example:</strong> A small manufacturer keeps a valuable production formula in a shared folder that every intern and contractor can access. Before relying on trade-secret protections, the business should consider whether it is taking reasonable steps to keep the information secret. The DTSA is a U.S. law relevant to trade secrets; actual rights depend on the facts and applicable law.</p>
+                <p><strong>Ask:</strong> What practical safeguards would you recommend in each example?</p>
+            </div>
         </section>
 
         <section class="section" id="scenarios" aria-labelledby="scenarios-title" hidden>
@@ -287,11 +320,35 @@
                 </div>
                 <p class="feedback-box" role="status" aria-live="polite"></p>
             </article>
+            <article class="case-file">
+                <h3>Bonus round: The rushed product launch</h3>
+                <p>Your team's new study app stores students' names and schedules. A launch is planned for tomorrow, but nobody has checked who can access the data or how long it is kept.</p>
+                <p><strong>Your move:</strong> Name one question to ask before launch, one person or group to consult, and one risk-reducing action. Consider privacy, safety, and accountability.</p>
+            </article>
+        </section>
+
+        <section class="section" id="documentation" aria-labelledby="documentation-title" hidden>
+            <h2 id="documentation-title">What changed and why</h2>
+            <p>This page records how peer feedback informed the latest improvement to the academy.</p>
+            <div class="case-file">
+                <h3>Feedback received</h3>
+                <p>A classmate who reviewed the website said it lacked real-world examples for each section.</p>
+            </div>
+            <h3>How the feedback was addressed</h3>
+            <ul>
+                <li>Added short, recognizable case files about a campus location app, a résumé-ranking tool, personal data, and a confidential manufacturing formula.</li>
+                <li>Added a bonus product-launch scenario to connect privacy, safety, and accountability.</li>
+                <li>Added Socratic questions so learners practice identifying affected people, testing assumptions, asking for evidence, and proposing safeguards.</li>
+                <li>Connected legal examples to the GDPR and DTSA citations while noting that laws depend on jurisdiction and facts.</li>
+            </ul>
+            <h3>Learning approach</h3>
+            <p>The examples are realistic teaching scenarios, not claims about specific companies, court cases, or legal outcomes. The learner is treated as a decision-maker: inspect the facts, ask what is missing, consider possible harms, and choose a responsible next step. Existing multiple-choice practice remains available for quick feedback.</p>
+            <div class="citation-box">Next improvement to consider: ask learners which scenario felt most realistic and add examples that reflect their feedback.</div>
         </section>
 
         <section class="section" id="sources" aria-labelledby="sources-title" hidden>
             <h2 id="sources-title">Further reading</h2>
-            <p>These resources provide general information. Check each source for its current guidance and scope.</p>
+            <p>These resources provide general information. For example, consult privacy guidance when reviewing the fitness-app case, or copyright information before reusing an image. Check each source for its current guidance and scope.</p>
             <ul>
                 <li><a class="source-link" href="https://www.ftc.gov/business-guidance/privacy-security">Federal Trade Commission: Privacy and security</a></li>
                 <li><a class="source-link" href="https://www.nist.gov/privacy-framework">NIST Privacy Framework</a></li>
@@ -301,7 +358,7 @@
 
         <section class="section" id="citations" aria-labelledby="citations-title" hidden>
             <h2 id="citations-title">Citations</h2>
-            <p>The following legal sources are cited for the academy's discussion of technology, privacy, and law:</p>
+            <p>The following legal sources inform the privacy and trade-secret examples in the Technology &amp; Law section. The scenarios are educational illustrations, not legal advice or summaries of specific cases.</p>
             <ol>
                 <li>
                     <strong>General Data Protection Regulation (GDPR) — Regulation (EU) 2016/679.</strong>
